@@ -1,0 +1,96 @@
+name: CI/CD Pipeline - Build, Containerize & Deploy Portfolio
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  # Job 1: Test & Build
+  test-and-build:
+    name: 🧪 Test & Build React App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Production Bundle
+        run: npm run build
+
+  # Job 2: Build & Push Docker Image
+  docker-build-push:
+    name: 🐳 Docker Build & Container Registry Push
+    needs: test-and-build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Extract Docker Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKER_USERNAME || 's1g1rkumar' }}/cyberpunk-portfolio
+          tags: |
+            type=raw,value=latest
+            type=sha,format=short
+
+      - name: Build and Push Docker Image
+        if: ${{ secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != '' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  # Job 3: Deploy to Server via SSH
+  deploy-to-server:
+    name: 🚀 Server Deployment (AWS / VPS)
+    needs: docker-build-push
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH to Production Server
+        if: ${{ secrets.SERVER_HOST != '' && secrets.SERVER_USER != '' && secrets.SERVER_SSH_KEY != '' }}
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying latest container update..."
+            docker pull ${{ secrets.DOCKER_USERNAME || 's1g1rkumar' }}/cyberpunk-portfolio:latest
+            docker stop cyberpunk_portfolio || true
+            docker rm cyberpunk_portfolio || true
+            docker run -d \
+              --name cyberpunk_portfolio \
+              --restart always \
+              -p 80:80 \
+              ${{ secrets.DOCKER_USERNAME || 's1g1rkumar' }}/cyberpunk-portfolio:latest
+            echo "✅ Deployment completed successfully!"

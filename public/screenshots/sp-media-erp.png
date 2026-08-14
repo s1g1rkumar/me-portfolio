@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="700" fill="url(#bg)" />
+  
+  <!-- Cyber Grid -->
+  <g opacity="0.15" stroke="#a855f7" stroke-width="1">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" />
+    </pattern>
+    <rect width="1200" height="700" fill="url(#grid)" />
+  </g>
+
+  <!-- Top Bar -->
+  <rect x="40" y="30" width="1120" height="50" rx="8" fill="#111827" stroke="#1f2937" />
+  <circle cx="70" cy="55" r="7" fill="#ef4444" />
+  <circle cx="95" cy="55" r="7" fill="#f59e0b" />
+  <circle cx="120" cy="55" r="7" fill="#10b981" />
+  <text x="560" y="60" fill="#a855f7" font-family="monospace" font-size="16" font-weight="bold">SP MEDIA ERP // PRINTING-PRESS PIPELINE v2.4</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="100" width="220" height="560" rx="8" fill="#0f172a" stroke="#1e293b" />
+  <rect x="60" y="130" width="180" height="35" rx="6" fill="url(#purpleGlow)" opacity="0.9" />
+  <text x="90" y="153" fill="#ffffff" font-family="sans-serif" font-size="14" font-weight="bold">Quotation Engine</text>
+  <rect x="60" y="180" width="180" height="35" rx="6" fill="#1e293b" />
+  <text x="90" y="203" fill="#94a3b8" font-family="sans-serif" font-size="14">Press Orders</text>
+  <rect x="60" y="230" width="180" height="35" rx="6" fill="#1e293b" />
+  <text x="90" y="253" fill="#94a3b8" font-family="sans-serif" font-size="14">AWS S3 Docs</text>
+  <rect x="60" y="280" width="180" height="35" rx="6" fill="#1e293b" />
+  <text x="90" y="303" fill="#94a3b8" font-family="sans-serif" font-size="14">Invoicing System</text>
+
+  <!-- Main Content Cards -->
+  <rect x="280" y="100" width="420" height="260" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+  <text x="310" y="135" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="bold">Active Printing Orders</text>
+  <path d="M 310 280 C 370 200, 450 320, 520 220 C 580 180, 640 240, 660 210" fill="none" stroke="url(#purpleGlow)" stroke-width="4" />
+  
+  <rect x="720" y="100" width="440" height="260" rx="8" fill="#0f172a" stroke="#1e293b" />
+  <text x="750" y="135" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="bold">AWS Cloud Vault Metrics</text>
+  <rect x="750" y="160" width="380" height="20" rx="10" fill="#1e293b" />
+  <rect x="750" y="160" width="290" height="20" rx="10" fill="url(#cyanGlow)" />
+  <text x="750" y="210" fill="#94a3b8" font-family="monospace" font-size="14">Storage: 742.8 GB / 1 TB (S3 Standard)</text>
+
+  <rect x="280" y="380" width="880" height="280" rx="8" fill="#0f172a" stroke="#1e293b" />
+  <text x="310" y="415" fill="#f8fafc" font-family="sans-serif" font-size="18" font-weight="bold">Live Job Stream &amp; Quotation Calculation</text>
+  <rect x="310" y="440" width="820" height="50" rx="6" fill="#1e293b" />
+  <text x="330" y="470" fill="#a855f7" font-family="monospace" font-size="14">#ORD-9482 // Standard Magazine Print // Status: INVOICED // $14,250.00</text>
+  <rect x="310" y="505" width="820" height="50" rx="6" fill="#1e293b" />
+  <text x="330" y="535" fill="#00f0ff" font-family="monospace" font-size="14">#ORD-9483 // Custom Matte Brochure 100k // Status: PROCESSING // $38,900.00</text>
+</svg>

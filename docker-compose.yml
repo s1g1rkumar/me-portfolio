@@ -1,0 +1,12 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sagarkumarrana/portfolio:latest
+    container_name: cyberpunk_portfolio
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
