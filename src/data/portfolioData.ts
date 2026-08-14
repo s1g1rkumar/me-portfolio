@@ -127,7 +127,7 @@ export const ACHIEVEMENTS_PROJECTS: ProjectAchievement[] = [
     category: "Enterprise Software",
     description: "Full-scale enterprise application featuring sales, inventory, purchase, quotation, invoice, HR, attendance, and executive analytics modules with secure JWT auth & RBAC.",
     fullDetails: "Architected for high-scale enterprise operations. Features granular multi-tenant access control, real-time stock inventory tracking, automated GST invoice generation, employee attendance logs, and interactive financial dashboard graphs.",
-    imagePlaceholder: "/screenshots/erp-system.png",
+    imagePlaceholder: "/screenshots5/erp-system.png",
     techStack: ["React.js", "TypeScript", "Redux Toolkit", "Material UI", "REST API", "MySQL"],
     rarity: "MYTHIC",
     unlockedDate: "2026",
