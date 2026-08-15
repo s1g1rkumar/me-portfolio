@@ -88,6 +88,6 @@ jobs:
             docker run -d \
               --name cyberpunk_portfolio \
               --restart always \
-              -p 80:80 \
+              -p 127.0.0.1:3001:80 \
               ${{ secrets.DOCKER_USERNAME }}/cyberpunk-portfolio:latest
             echo "✅ Deployment completed successfully!"
