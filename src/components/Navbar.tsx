@@ -5,9 +5,10 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 interface NavbarProps {
   activeSection?: string;
   onNavigate: (sectionId: string) => void;
+  onOpenResume?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onNavigate, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentTime, setCurrentTime] = useState<string>('');
 
@@ -47,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           <span>REGION: AWS-AP-SOUTH-1</span>
         </div>
         <div className="flex items-center space-x-4">
-          <span className="text-cyan-300">USER: PLAYER_1</span>
+          <span className="text-cyan-300">USER: RECRUITER_SESSION</span>
           <span className="text-amber-400">LOC: INDIA UTC+5:30 [{currentTime}]</span>
         </div>
       </div>
@@ -58,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           {/* Logo / Player Rank Badge */}
           <button 
             onClick={() => onNavigate('hero')}
-            className="flex items-center space-x-3 group focus:outline-none"
+            className="flex items-center space-x-3 group focus:outline-none text-left"
           >
             <div className="relative flex items-center justify-center w-10 h-10 bg-cyan-950/80 border border-cyan-400/50 clip-corner-sm group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all">
               <span className="font-display font-black text-cyan-400 text-lg group-hover:scale-110 transition-transform">
@@ -76,13 +77,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 </span>
               </span>
               <span className="text-[10px] font-tech text-slate-400 group-hover:text-cyan-300/80 transition-colors">
-                FULL-STACK ARCHITECT
+                SENIOR FULL-STACK DEVELOPER
               </span>
             </div>
           </button>
 
-          {/* Quick CTA Button */}
+          {/* Quick CTA Buttons */}
           <div className="flex items-center space-x-3">
+            {onOpenResume && (
+              <button
+                onClick={onOpenResume}
+                className="hidden sm:flex items-center space-x-1.5 px-3 py-2 text-xs font-tech tracking-wider text-cyan-300 bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/40 hover:border-cyan-400 clip-corner-sm transition-all"
+              >
+                <span>VIEW RESUME</span>
+              </button>
+            )}
+
             <button
               onClick={() => onNavigate('contact')}
               className="flex items-center space-x-2 px-4 py-2 text-xs font-display font-bold tracking-wider text-black bg-cyan-400 hover:bg-cyan-300 clip-corner-sm transition-all duration-200 shadow-[0_0_15px_rgba(0,240,255,0.4)] hover:shadow-[0_0_25px_rgba(0,240,255,0.8)] active:scale-95"

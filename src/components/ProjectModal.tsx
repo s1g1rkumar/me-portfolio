@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Award, CheckCircle2, ExternalLink, Layers, Calendar, Lock } from 'lucide-react';
 import type { ProjectAchievement } from '../types';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface ProjectModalProps {
   project: ProjectAchievement | null;
@@ -57,21 +58,6 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Modal Body */}
           <div className="p-6 overflow-y-auto space-y-6">
-            
-            {/* Screenshot Display */}
-            <div className="relative rounded overflow-hidden border border-cyan-500/40 shadow-[0_0_20px_rgba(0,0,0,0.8)] max-h-80 bg-slate-950">
-              <img
-                src={project.imagePlaceholder}
-                alt={project.title}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
-              />
-              <div className="absolute bottom-2 right-2 px-3 py-1 bg-black/80 text-cyan-300 font-tech text-xs rounded border border-cyan-500/40">
-                SCREENSHOT PLACEHOLDER: {project.imagePlaceholder}
-              </div>
-            </div>
 
             {/* Subtitle & Category */}
             <div>
@@ -136,13 +122,25 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               >
                 CLOSE
               </button>
-              <button
-                onClick={() => alert(`Project Details: ${project.title}\nContact Sagar at sagar.rana.dev@gmail.com for architecture demo!`)}
-                className="px-5 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-display font-bold text-xs tracking-wider clip-corner-sm flex items-center space-x-2 shadow-[0_0_15px_rgba(0,240,255,0.4)]"
-              >
-                <span>REQUEST LIVE DEMO</span>
-                <ExternalLink className="w-3.5 h-3.5 text-black" />
-              </button>
+              {project.demoUrl ? (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-5 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-display font-bold text-xs tracking-wider clip-corner-sm flex items-center space-x-2 shadow-[0_0_15px_rgba(0,240,255,0.4)]"
+                >
+                  <span>LAUNCH LIVE SYSTEM</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-black" />
+                </a>
+              ) : (
+                <a
+                  href={`mailto:${PERSONAL_INFO.contact.email}?subject=Live%20Demo%20Request%20-%20${encodeURIComponent(project.title)}`}
+                  className="px-5 py-2 bg-cyan-400 hover:bg-cyan-300 text-black font-display font-bold text-xs tracking-wider clip-corner-sm flex items-center space-x-2 shadow-[0_0_15px_rgba(0,240,255,0.4)]"
+                >
+                  <span>REQUEST ARCHITECTURE DEMO</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-black" />
+                </a>
+              )}
             </div>
           </div>
 

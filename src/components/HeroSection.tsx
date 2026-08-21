@@ -5,11 +5,12 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroSectionProps {
   onNavigate: (sectionId: string) => void;
+  onOpenResume?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResume }) => {
   const [taglineText, setTaglineText] = useState('');
-  const fullTagline = "Architecting High-Performance Enterprise ERPs, Microservices & Scalable Cloud Solutions.";
+  const fullTagline = "Senior Full-Stack Developer | React.js · TypeScript · Node.js · Angular · AWS";
   const [isTypingDone, setIsTypingDone] = useState(false);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         setIsTypingDone(true);
         clearInterval(timer);
       }
-    }, 45);
+    }, 35);
     return () => clearInterval(timer);
   }, []);
 
@@ -50,10 +51,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           </div>
           <div className="flex items-center space-x-4 text-slate-400 text-[11px]">
             <span className="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
-              CLASS: FULL-STACK DEVELOPER
+              CLASS: SENIOR FULL-STACK DEVELOPER
             </span>
             <span className="px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300">
-              EXP: 5+ YEARS
+              EXP: 4+ YEARS
             </span>
           </div>
         </motion.div>
@@ -96,15 +97,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
               <div className="text-xs font-tech text-cyan-400/70 mb-1 flex items-center justify-between">
                 <span>SYSTEM SUMMARY LOG</span>
-                <span>STATUS: READY</span>
+                <span>STATUS: READY FOR DEPLOYMENT</span>
               </div>
 
-              <p className="text-sm sm:text-base font-mono text-slate-300 min-h-[3rem] leading-relaxed">
+              <p className="text-sm sm:text-base font-mono text-cyan-300 min-h-[2.5rem] leading-relaxed">
                 &gt; {taglineText}
                 <span className={`inline-block w-2 h-4 bg-cyan-400 ml-1 ${isTypingDone ? 'animate-pulse' : ''}`} />
               </p>
 
-              <p className="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed font-sans border-t border-slate-800 pt-3">
+              <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans border-t border-slate-800 pt-3">
                 {PERSONAL_INFO.summary}
               </p>
             </motion.div>
@@ -125,12 +126,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="text-xl font-display font-bold text-purple-400">15+</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-emerald-500/20 clip-corner-sm text-center">
-                <div className="text-xs font-tech text-slate-400">QUEST RATE</div>
-                <div className="text-xl font-display font-bold text-emerald-400">100%</div>
+                <div className="text-xs font-tech text-slate-400">LIVE DEMOS</div>
+                <div className="text-xl font-display font-bold text-emerald-400">3 LIVE</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-amber-500/20 clip-corner-sm text-center">
-                <div className="text-xs font-tech text-slate-400">TECH STACK</div>
-                <div className="text-xl font-display font-bold text-amber-400">FULL-STACK</div>
+                <div className="text-xs font-tech text-slate-400">CODE QUALITY</div>
+                <div className="text-xl font-display font-bold text-amber-400">99.8%</div>
               </div>
             </motion.div>
 
@@ -146,7 +147,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 className="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-400 text-black font-display font-bold text-sm tracking-wider clip-corner-md shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center space-x-2 group"
               >
                 <Sparkles className="w-4 h-4 text-black group-hover:rotate-12 transition-transform" />
-                <span>VIEW QUEST LOG (PROJECTS)</span>
+                <span>VIEW PROJECTS &amp; LIVE DEMOS</span>
                 <ChevronRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
               </button>
 
@@ -155,16 +156,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 className="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-display font-bold text-sm tracking-wider border border-cyan-400/50 hover:border-cyan-400 clip-corner-md shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-200 flex items-center space-x-2"
               >
                 <Shield className="w-4 h-4 text-cyan-400" />
-                <span>SAVE CHECKPOINT</span>
+                <span>CONTACT &amp; RECRUIT</span>
               </button>
 
               <a
-                href="mailto:sagar.rana.dev@gmail.com?subject=Portfolio%20Inquiry%20-%20Full-Stack%20Role"
-                className="px-4 py-3.5 bg-slate-900/40 hover:bg-slate-800/60 text-slate-300 hover:text-white font-tech text-xs tracking-wider border border-slate-700 rounded transition-colors flex items-center space-x-2"
+                href="/assets/resume sagar kumar rana .pdf"
+                download="Sagar_Kumar_Rana_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-3.5 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500 hover:to-indigo-500 text-white font-tech text-xs tracking-wider border border-purple-400/50 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
               >
-                <FileText className="w-4 h-4 text-purple-400" />
-                <span>DOWNLOAD RESUME</span>
+                <FileText className="w-4 h-4 text-purple-200" />
+                <span>DOWNLOAD RESUME PDF</span>
               </a>
+
+              <button
+                onClick={onOpenResume}
+                className="px-4 py-3.5 bg-slate-900/60 hover:bg-slate-800/80 text-cyan-300 font-tech text-xs tracking-wider border border-cyan-500/40 hover:border-cyan-400 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_10px_rgba(0,240,255,0.15)]"
+              >
+                <FileText className="w-4 h-4 text-cyan-400" />
+                <span>VIEW CV MODAL</span>
+              </button>
             </motion.div>
 
           </div>

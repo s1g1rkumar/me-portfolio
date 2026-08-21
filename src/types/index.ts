@@ -30,7 +30,7 @@ export interface ProjectAchievement {
   category: string;
   description: string;
   fullDetails: string;
-  imagePlaceholder: string; // e.g. /screenshots/erp-system.png
+  imagePlaceholder?: string;
   techStack: string[];
   rarity: 'LEGENDARY' | 'MYTHIC' | 'EPIC' | 'RARE';
   unlockedDate: string;

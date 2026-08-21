@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Award, Sparkles, ExternalLink, Layers, CheckCircle2 } from 'lucide-react';
+import { Award, ExternalLink, Layers, CheckCircle2 } from 'lucide-react';
 import { ACHIEVEMENTS_PROJECTS } from '../data/portfolioData';
 import type { ProjectAchievement } from '../types';
 import { ProjectModal } from './ProjectModal';
@@ -51,22 +51,11 @@ export const AchievementsSection: React.FC = () => {
                 <div className="hud-corner hud-corner-bl" />
                 <div className="hud-corner hud-corner-br" />
 
-                {/* Top Screenshot Card Area with img Tag */}
+                {/* Top Cyber Card HUD Banner (No image) */}
                 <div>
-                  <div className="relative w-full h-56 sm:h-64 bg-slate-950 overflow-hidden border-b border-cyan-500/20">
-                    
-                    {/* Image tag with exact screenshot path as requested */}
-                    <img
-                      src={project.imagePlaceholder}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-
-                    {/* Rarity & Unlocked Badge */}
-                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                  <div className="relative w-full p-5 bg-gradient-to-r from-slate-950 via-cyan-950/40 to-slate-950 border-b border-cyan-500/30 flex items-center justify-between">
+                    {/* Rarity & Category Badge */}
+                    <div className="flex items-center gap-2">
                       <span className={`px-2.5 py-1 text-[10px] font-tech font-bold clip-badge ${
                         project.rarity === 'MYTHIC'
                           ? 'bg-amber-400 text-black shadow-[0_0_10px_#f59e0b]'
@@ -76,22 +65,14 @@ export const AchievementsSection: React.FC = () => {
                       }`}>
                         ★ {project.rarity}
                       </span>
-                      <span className="px-2 py-0.5 text-[10px] font-tech bg-slate-950/80 text-cyan-300 border border-cyan-500/30 rounded">
+                      <span className="px-2 py-0.5 text-[10px] font-tech bg-slate-900/90 text-cyan-300 border border-cyan-500/30 rounded">
                         {project.category}
                       </span>
                     </div>
 
-                    {/* Hover Glow Reveal Button */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-sm p-4">
-                      <button
-                        onClick={() => setSelectedProject(project)}
-                        className="px-5 py-2.5 bg-cyan-400 text-black font-display font-bold text-xs tracking-wider clip-corner-sm shadow-[0_0_20px_#00f0ff] hover:scale-105 transition-all flex items-center space-x-2"
-                      >
-                        <Sparkles className="w-4 h-4 text-black" />
-                        <span>INSPECT ACHIEVEMENT BRIEF</span>
-                      </button>
-                    </div>
-
+                    <span className="text-[10px] font-tech text-slate-400">
+                      {project.unlockedDate}
+                    </span>
                   </div>
 
                   {/* Card Content Area */}
@@ -136,13 +117,26 @@ export const AchievementsSection: React.FC = () => {
                     ACHIEVEMENT UNLOCKED
                   </span>
 
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="text-xs font-tech text-cyan-300 hover:text-cyan-200 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
-                  >
-                    <span>VIEW DETAILS</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-2.5 py-1 text-[11px] font-tech bg-cyan-500/20 text-cyan-300 border border-cyan-400 rounded hover:bg-cyan-400 hover:text-black transition-colors flex items-center gap-1"
+                      >
+                        <span>LIVE</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="text-xs font-tech text-cyan-300 hover:text-cyan-200 flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                    >
+                      <span>VIEW DETAILS</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
 
               </motion.div>

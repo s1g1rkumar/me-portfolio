@@ -7,9 +7,11 @@ import { AchievementsSection } from './components/AchievementsSection';
 import { CharacterSheetSection } from './components/CharacterSheetSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { ResumeModal } from './components/ResumeModal';
 
 export function App() {
   const [activeSection, setActiveSection] = useState<string>('hero');
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -50,12 +52,19 @@ export function App() {
       <div className="fixed inset-0 scanline-overlay z-40 pointer-events-none opacity-40" />
 
       {/* Futuristic Header Navbar */}
-      <Navbar activeSection={activeSection} onNavigate={scrollToSection} />
+      <Navbar 
+        activeSection={activeSection} 
+        onNavigate={scrollToSection} 
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
       {/* Main Single Page Sections */}
       <main>
         {/* Section 1: Hero / Character Select */}
-        <HeroSection onNavigate={scrollToSection} />
+        <HeroSection 
+          onNavigate={scrollToSection} 
+          onOpenResume={() => setIsResumeOpen(true)}
+        />
 
         {/* Section 2: Skill Tree / Stats */}
         <SkillTreeSection />
@@ -75,6 +84,12 @@ export function App() {
 
       {/* Footer */}
       <Footer onNavigate={scrollToSection} />
+
+      {/* Interactive Resume View / Print Modal */}
+      <ResumeModal 
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
 
     </div>
   );
