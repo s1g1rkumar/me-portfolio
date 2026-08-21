@@ -118,7 +118,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             >
               <div className="p-2.5 bg-slate-900/60 border border-cyan-500/20 clip-corner-sm text-center">
                 <div className="text-xs font-tech text-slate-400">EXPERIENCE</div>
-                <div className="text-xl font-display font-bold text-cyan-400">5+ YRS</div>
+                <div className="text-xl font-display font-bold text-cyan-400">4+ YRS</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-purple-500/20 clip-corner-sm text-center">
                 <div className="text-xs font-tech text-slate-400">ENTERPRISE MODS</div>
