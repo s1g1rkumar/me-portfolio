@@ -5,7 +5,7 @@ import { QUESTS_EXPERIENCE } from '../data/portfolioData';
 import type { ExperienceQuest } from '../types';
 
 export const QuestLogSection: React.FC = () => {
-  const [expandedQuestId, setExpandedQuestId] = useState<string>('quest-lvl-4');
+  const [expandedQuestId, setExpandedQuestId] = useState<string>('quest-lvl-3');
 
   const toggleExpand = (id: string) => {
     setExpandedQuestId(prev => prev === id ? '' : id);

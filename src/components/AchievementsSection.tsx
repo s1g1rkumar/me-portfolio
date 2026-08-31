@@ -29,7 +29,7 @@ export const AchievementsSection: React.FC = () => {
 
           <div className="mt-4 md:mt-0 text-right">
             <span className="text-xs font-tech px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 clip-badge">
-              4 / 4 MAJOR ACHIEVEMENTS UNLOCKED (100%)
+              {ACHIEVEMENTS_PROJECTS.length} / {ACHIEVEMENTS_PROJECTS.length} MAJOR ACHIEVEMENTS UNLOCKED (100%)
             </span>
           </div>
         </div>

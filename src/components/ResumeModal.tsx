@@ -99,7 +99,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <span>•</span>
                 <a href={PERSONAL_INFO.contact.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-sky-300">
                   <ExternalLink className="w-3.5 h-3.5 text-sky-400" />
-                  linkedin.com/in/sagar-kumarrana6664
+                  linkedin.com/in/sagar-kumar-rana6664
                 </a>
               </div>
             </div>

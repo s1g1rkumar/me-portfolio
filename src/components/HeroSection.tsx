@@ -119,19 +119,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
             >
               <div className="p-2.5 bg-slate-900/60 border border-cyan-500/20 clip-corner-sm text-center">
                 <div className="text-xs font-tech text-slate-400">EXPERIENCE</div>
-                <div className="text-xl font-display font-bold text-cyan-400">4+ YRS</div>
+                <div className="text-xl font-display font-bold text-cyan-400">{PERSONAL_INFO.stats.experienceYears}</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-purple-500/20 clip-corner-sm text-center">
-                <div className="text-xs font-tech text-slate-400">ENTERPRISE MODS</div>
-                <div className="text-xl font-display font-bold text-purple-400">15+</div>
+                <div className="text-xs font-tech text-slate-400">USERS SERVED</div>
+                <div className="text-xl font-display font-bold text-purple-400">{PERSONAL_INFO.stats.usersServed}</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-emerald-500/20 clip-corner-sm text-center">
-                <div className="text-xs font-tech text-slate-400">LIVE DEMOS</div>
-                <div className="text-xl font-display font-bold text-emerald-400">3 LIVE</div>
+                <div className="text-xs font-tech text-slate-400">CLIENT ORGS</div>
+                <div className="text-xl font-display font-bold text-emerald-400">{PERSONAL_INFO.stats.clientOrgs}</div>
               </div>
               <div className="p-2.5 bg-slate-900/60 border border-amber-500/20 clip-corner-sm text-center">
-                <div className="text-xs font-tech text-slate-400">CODE QUALITY</div>
-                <div className="text-xl font-display font-bold text-amber-400">99.8%</div>
+                <div className="text-xs font-tech text-slate-400">LIVE DEMOS</div>
+                <div className="text-xl font-display font-bold text-amber-400">{PERSONAL_INFO.stats.liveDemos}</div>
               </div>
             </motion.div>
 
