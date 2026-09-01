@@ -73,34 +73,44 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           <div className="p-6 sm:p-8 overflow-y-auto space-y-6 font-sans text-xs sm:text-sm leading-relaxed print:text-black print:bg-white">
             
             {/* Document Title Header */}
-            <div className="border-b border-cyan-500/30 pb-6 text-center sm:text-left">
-              <h1 className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
-                SAGAR KUMAR RANA
-              </h1>
-              <p className="text-cyan-400 font-tech font-semibold text-sm mt-1">
-                Senior Full-Stack Developer | React.js · TypeScript · Node.js · Angular · AWS
-              </p>
+            <div className="border-b border-cyan-500/30 pb-6 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_15px_rgba(0,240,255,0.3)] shrink-0 bg-slate-950">
+                <img 
+                  src={PERSONAL_INFO.avatar} 
+                  alt={PERSONAL_INFO.name} 
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
 
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 mt-3 text-xs font-tech text-slate-300">
-                <a href={`mailto:${PERSONAL_INFO.contact.email}`} className="flex items-center gap-1 hover:text-cyan-300">
-                  <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                  {PERSONAL_INFO.contact.email}
-                </a>
-                <span>•</span>
-                <a href={`tel:${PERSONAL_INFO.contact.phone}`} className="flex items-center gap-1 hover:text-purple-300">
-                  <Phone className="w-3.5 h-3.5 text-purple-400" />
-                  {PERSONAL_INFO.contact.phone}
-                </a>
-                <span>•</span>
-                <a href={PERSONAL_INFO.contact.github} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-cyan-300">
-                  <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                  github.com/s1g1rkumar
-                </a>
-                <span>•</span>
-                <a href={PERSONAL_INFO.contact.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-sky-300">
-                  <ExternalLink className="w-3.5 h-3.5 text-sky-400" />
-                  linkedin.com/in/sagar-kumar-rana6664
-                </a>
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl font-display font-black text-white tracking-tight">
+                  SAGAR KUMAR RANA
+                </h1>
+                <p className="text-cyan-400 font-tech font-semibold text-sm mt-1">
+                  Senior Full-Stack Developer | React.js · TypeScript · Node.js · Angular · AWS
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 mt-3 text-xs font-tech text-slate-300">
+                  <a href={`mailto:${PERSONAL_INFO.contact.email}`} className="flex items-center gap-1 hover:text-cyan-300">
+                    <Mail className="w-3.5 h-3.5 text-cyan-400" />
+                    {PERSONAL_INFO.contact.email}
+                  </a>
+                  <span>•</span>
+                  <a href={`tel:${PERSONAL_INFO.contact.phone}`} className="flex items-center gap-1 hover:text-purple-300">
+                    <Phone className="w-3.5 h-3.5 text-purple-400" />
+                    {PERSONAL_INFO.contact.phone}
+                  </a>
+                  <span>•</span>
+                  <a href={PERSONAL_INFO.contact.github} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-cyan-300">
+                    <Code2 className="w-3.5 h-3.5 text-cyan-400" />
+                    github.com/s1g1rkumar
+                  </a>
+                  <span>•</span>
+                  <a href={PERSONAL_INFO.contact.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-sky-300">
+                    <ExternalLink className="w-3.5 h-3.5 text-sky-400" />
+                    linkedin.com/in/sagar-kumar-rana6664
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -268,7 +278,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <span>PRINT CV</span>
               </button>
               <a
-                href="/assets/resume sagar kumar rana .pdf"
+                href={PERSONAL_INFO.resumeUrl}
                 download="Sagar_Kumar_Rana_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"

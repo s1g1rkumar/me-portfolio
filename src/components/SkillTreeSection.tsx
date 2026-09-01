@@ -61,7 +61,7 @@ export const SkillTreeSection: React.FC = () => {
               CHARACTER <span className="text-cyan-400 text-glow-cyan">SKILL TREE</span> &amp; STATS
             </h2>
             <p className="text-slate-400 text-sm mt-2 max-w-xl font-sans">
-              Mastered technologies, frameworks, cloud architecture tools and database engines gained over 5+ years of enterprise engineering quests.
+              Mastered technologies, frameworks, cloud architecture tools and database engines gained over 4+ years of enterprise engineering quests.
             </p>
           </div>
 

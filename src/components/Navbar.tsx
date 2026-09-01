@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
@@ -61,12 +61,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, onOpenResume }) => {
             onClick={() => onNavigate('hero')}
             className="flex items-center space-x-3 group focus:outline-none text-left"
           >
-            <div className="relative flex items-center justify-center w-10 h-10 bg-cyan-950/80 border border-cyan-400/50 clip-corner-sm group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all">
-              <span className="font-display font-black text-cyan-400 text-lg group-hover:scale-110 transition-transform">
-                SR
-              </span>
-              <div className="hud-corner hud-corner-tl" />
-              <div className="hud-corner hud-corner-br" />
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-full border border-cyan-400/80 p-0.5 group-hover:border-cyan-300 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.6)] transition-all bg-slate-900">
+              <img 
+                src={PERSONAL_INFO.avatar} 
+                alt={PERSONAL_INFO.name}
+                className="w-full h-full object-cover object-top rounded-full group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border border-slate-950 shadow-[0_0_8px_#10b981]" />
             </div>
 
             <div className="flex flex-col text-left">
@@ -92,6 +93,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate, onOpenResume }) => {
                 <span>VIEW RESUME</span>
               </button>
             )}
+
+            <a
+              href={PERSONAL_INFO.resumeUrl}
+              download="Sagar_Kumar_Rana_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden md:flex items-center space-x-1.5 px-3 py-2 text-xs font-tech tracking-wider text-purple-300 bg-purple-950/60 hover:bg-purple-900/80 border border-purple-500/40 hover:border-purple-400 clip-corner-sm transition-all shadow-[0_0_10px_rgba(168,85,247,0.2)]"
+              title="Download Resume PDF"
+            >
+              <Download className="w-3.5 h-3.5 text-purple-300" />
+              <span>DOWNLOAD CV</span>
+            </a>
 
             <button
               onClick={() => onNavigate('contact')}

@@ -1,10 +1,14 @@
 import type { SkillItem, ExperienceQuest, ProjectAchievement, EducationItem, CharacterAttribute } from '../types';
+import sagarProfilePic from '../assets/profilepic/sagar.jpeg';
+import sagarResume from '../assets/resume/Sagar kumar rana.pdf';
 
 export const PERSONAL_INFO = {
   name: "Sagar Kumar Rana",
   title: "Senior Full-Stack Developer",
   classTitle: "LVL 99 SENIOR FULL-STACK ARCHITECT",
   taglineSub: "React.js · TypeScript · Node.js · Angular · AWS",
+  avatar: sagarProfilePic,
+  resumeUrl: sagarResume,
   contact: {
     email: "sagar.rana.dev@gmail.com",
     phone: "+91 9110956664",
@@ -13,7 +17,7 @@ export const PERSONAL_INFO = {
     githubUsername: "s1g1rkumar",
     linkedinUsername: "sagar-kumar-rana6664"
   },
-  summary: "Senior Full-Stack Developer with 4+ years delivering scalable enterprise web applications using React.js, TypeScript, Angular, Node.js, Express.js, MongoDB, MySQL, and AWS. Shipped ERP, CRM, education, and business-management platforms serving 50,000+ users across 11+ client organizations, architecting secure RESTful APIs and cutting dashboard load times by up to 15%.",
+  summary: "Results-driven Senior Full-Stack Developer with 4+ years of experience designing and building scalable enterprise web applications using React.js, TypeScript, Angular, Node.js, Express.js, MongoDB, MySQL, and AWS. Proven track record delivering ERP, CRM, education, and business-management platforms - architecting secure RESTful APIs, optimizing application performance, and leading feature delivery in fast-paced Agile teams.",
   stats: {
     experienceYears: "4+ YRS",
     usersServed: "50,000+",
@@ -111,7 +115,7 @@ export const QUESTS_EXPERIENCE: ExperienceQuest[] = [
     company: "Invictus DigiSoft Pvt. Ltd.",
     location: "Onsite",
     workType: "Onsite",
-    period: "Sept 2024 – Nov 2025",
+    period: "Jan 2022 – Aug 2024",
     status: "COMPLETED",
     summary: "Led full-stack delivery on MEAN and MERN stack projects including SP Media ERP, Easy Tutor, and stock market learning platform.",
     achievements: [
@@ -225,13 +229,31 @@ export const ACHIEVEMENTS_PROJECTS: ProjectAchievement[] = [
 
 export const EDUCATION_DATA: EducationItem[] = [
   {
-    degree: "Master of Computer Applications (M.C.A.)",
+    degree: "M.C.A. (Master of Computer Applications)",
     institution: "Jharkhand Rai University, Ranchi",
     location: "Ranchi, Jharkhand",
     period: "Aug 2019 – Sept 2021",
-    score: "CGPA 8.25 / 10",
+    score: "CGPA: 8.25 / 10",
     description: "Specialized in Advanced Web Technologies, Database Systems, Software Architecture, REST API Design, and Enterprise Distributed Systems.",
     icon: "GraduationCap"
+  },
+  {
+    degree: "B.C.A. (Bachelor of Computer Applications)",
+    institution: "Makhanlal Chaturvedi National University, Bhopal",
+    location: "Bhopal, Madhya Pradesh",
+    period: "Aug 2015 – Sept 2018",
+    score: "Score: 64.42%",
+    description: "Core coursework in Computer Science fundamentals, Object-Oriented Programming, Data Structures, Algorithms & Web Development.",
+    icon: "BookOpen"
+  },
+  {
+    degree: "Intermediate (Science)",
+    institution: "Inter Science College, Hazaribagh",
+    location: "Hazaribagh, Jharkhand",
+    period: "July 2012 – July 2014",
+    score: "Score: 67.80%",
+    description: "Higher secondary education with specialization in Mathematics, Physics, and Chemistry.",
+    icon: "Award"
   }
 ];
 

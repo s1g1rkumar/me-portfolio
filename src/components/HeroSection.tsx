@@ -160,7 +160,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
               </button>
 
               <a
-                href="/assets/resume sagar kumar rana .pdf"
+                href={PERSONAL_INFO.resumeUrl}
                 download="Sagar_Kumar_Rana_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
@@ -214,17 +214,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
                 <div className="absolute -inset-2 rounded-full border border-purple-500/30 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }} />
                 
                 {/* Central Avatar Visual Box */}
-                <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-gradient-to-br from-cyan-950 via-slate-900 to-purple-950 border-2 border-cyan-400 p-1 flex flex-col items-center justify-center text-center shadow-[0_0_25px_rgba(0,240,255,0.4)] relative overflow-hidden">
-                  <div className="absolute inset-0 bg-cyan-500/10 opacity-30 scanline-overlay" />
-                  <div className="font-display font-black text-4xl text-cyan-300 text-glow-cyan mb-1">
-                    SR
+                <div className="w-44 h-44 sm:w-52 sm:h-52 rounded-full bg-gradient-to-br from-cyan-950 via-slate-900 to-purple-950 border-2 border-cyan-400 p-1.5 shadow-[0_0_30px_rgba(0,240,255,0.45)] relative overflow-hidden group-hover:border-cyan-300 transition-all duration-300">
+                  <div className="w-full h-full rounded-full overflow-hidden relative">
+                    <img 
+                      src={PERSONAL_INFO.avatar} 
+                      alt={PERSONAL_INFO.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Subtle Holographic Scanline Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-transparent to-purple-900/20 pointer-events-none" />
+                    <div className="absolute inset-0 scanline-overlay opacity-30 pointer-events-none" />
                   </div>
-                  <span className="font-tech text-[10px] text-cyan-400 tracking-widest uppercase">
-                    SENIOR DEV
-                  </span>
-                  <span className="font-mono text-[9px] text-slate-400 mt-1">
-                    REACT · NODE · AWS
-                  </span>
                 </div>
 
                 {/* Floating Level Badge */}

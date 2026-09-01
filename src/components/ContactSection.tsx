@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, Save, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { Send, Mail, Phone, Save, CheckCircle2, ShieldCheck, Sparkles, FileText, Download } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const ContactSection: React.FC = () => {
@@ -60,11 +60,25 @@ export const ContactSection: React.FC = () => {
               <div className="hud-corner hud-corner-br" />
 
               <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="font-display font-bold text-xs text-white tracking-wider">
-                    CHECKPOINT SLOT #01: ACTIVE
-                  </span>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full border border-cyan-400 overflow-hidden bg-slate-950 shadow-[0_0_10px_rgba(0,240,255,0.4)] shrink-0">
+                    <img 
+                      src={PERSONAL_INFO.avatar} 
+                      alt={PERSONAL_INFO.name} 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                      <span className="font-display font-bold text-xs text-white tracking-wider">
+                        CHECKPOINT SLOT #01: ACTIVE
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-tech text-slate-400">
+                      SAGAR KUMAR RANA // ONLINE
+                    </span>
+                  </div>
                 </div>
                 <span className="text-[10px] font-tech text-cyan-400 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30">
                   AUTO-SAVE: ON
@@ -152,6 +166,26 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
                   <Sparkles className="w-4 h-4 text-sky-400 opacity-60 group-hover:opacity-100" />
+                </a>
+
+                {/* Resume Download */}
+                <a
+                  href={PERSONAL_INFO.resumeUrl}
+                  download="Sagar_Kumar_Rana_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 bg-gradient-to-r from-cyan-950/80 via-slate-900 to-purple-950/80 hover:from-cyan-900/90 hover:to-purple-900/90 text-cyan-200 hover:text-cyan-100 border border-cyan-400/60 hover:border-cyan-300 clip-corner-sm flex items-center justify-between transition-all duration-200 group shadow-[0_0_20px_rgba(0,240,255,0.25)]"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="p-2 rounded bg-cyan-500/30 text-cyan-300 group-hover:scale-110 transition-transform">
+                      <FileText className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-tech text-cyan-300">OFFICIAL RESUME FILE</div>
+                      <div className="font-bold text-slate-100 group-hover:text-cyan-200">DOWNLOAD RESUME PDF</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-cyan-400 group-hover:translate-y-0.5 transition-transform" />
                 </a>
 
               </div>

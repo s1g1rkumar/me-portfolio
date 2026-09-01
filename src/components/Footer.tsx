@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp, Terminal, Shield, Sparkles } from 'lucide-react';
+import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -23,15 +24,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Logo & Tagline */}
           <div className="md:col-span-5 text-left space-y-2">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-cyan-950 border border-cyan-400 flex items-center justify-center font-display font-black text-cyan-400 text-sm clip-corner-sm">
-                SR
+              <div className="w-9 h-9 rounded-full border border-cyan-400 overflow-hidden bg-slate-900 shadow-[0_0_10px_rgba(0,240,255,0.4)]">
+                <img 
+                  src={PERSONAL_INFO.avatar} 
+                  alt={PERSONAL_INFO.name} 
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <span className="font-display font-bold text-slate-100 text-base tracking-wider">
                 SAGAR KUMAR RANA
               </span>
             </div>
             <p className="text-slate-400 text-xs font-sans max-w-md">
-              Senior Full-Stack Developer with 5+ years of experience architecting enterprise web systems, REST APIs, and scalable AWS cloud solutions.
+              Senior Full-Stack Developer with 4+ years of experience architecting enterprise web systems, REST APIs, and scalable AWS cloud solutions.
             </p>
           </div>
 
