@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { Zap, Code2, Server, Database, Cloud, Wrench, FileCode, Sparkles, Award } from 'lucide-react';
+import { Zap, Code2, Server, Database, Cloud, Wrench, FileCode, Sparkles, Award, Search } from 'lucide-react';
 import { SKILLS_DATA } from '../data/portfolioData';
 import type { SkillItem } from '../types';
+import { soundFX } from '../utils/audio';
 
 export const SkillTreeSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [levelUpTriggered, setLevelUpTriggered] = useState(false);
 
   const categories = [
@@ -19,15 +21,21 @@ export const SkillTreeSection: React.FC = () => {
     { id: 'Tools', label: 'TOOLS' }
   ];
 
-  const filteredSkills = selectedCategory === 'ALL'
-    ? SKILLS_DATA
-    : SKILLS_DATA.filter(s => s.category === selectedCategory);
+  const filteredSkills = SKILLS_DATA.filter(s => {
+    const matchesCategory = selectedCategory === 'ALL' || s.category === selectedCategory;
+    const matchesSearch = !searchQuery || 
+      s.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      s.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (s.description && s.description.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
 
   const triggerLevelUpAnimation = () => {
+    soundFX.playLevelUp();
     setLevelUpTriggered(true);
     confetti({
-      particleCount: 100,
-      spread: 70,
+      particleCount: 120,
+      spread: 80,
       origin: { y: 0.6 },
       colors: ['#00f0ff', '#a855f7', '#10b981', '#f59e0b']
     });
@@ -80,24 +88,40 @@ export const SkillTreeSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {categories.map((cat) => {
-            const isActive = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 text-xs font-tech tracking-wider clip-corner-sm border transition-all duration-200 ${
-                  isActive
-                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
-                    : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
+        {/* Category Filters & Live Search */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-10">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 max-w-full scroll-smooth shrink-0 no-scrollbar">
+            {categories.map((cat) => {
+              const isActive = selectedCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    soundFX.playClick();
+                    setSelectedCategory(cat.id);
+                  }}
+                  className={`px-3.5 py-1.5 text-xs font-tech tracking-wider clip-corner-sm border transition-all duration-200 ${
+                    isActive
+                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
+                      : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="relative min-w-[240px]">
+            <Search className="w-4 h-4 text-cyan-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="SEARCH SKILL XP MATRIX..."
+              className="w-full pl-9 pr-3 py-1.5 bg-slate-950/80 border border-cyan-500/30 focus:border-cyan-400 text-xs font-tech text-cyan-300 placeholder-slate-500 clip-corner-sm outline-none shadow-inner"
+            />
+          </div>
         </div>
 
         {/* Skills XP Bars Grid */}

@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <div className="flex items-center space-x-2">
             <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>&copy; {new Date().getFullYear()} Sagar Kumar Rana. Built with React, TypeScript, Tailwind CSS &amp; Framer Motion.</span>
+            <span>&copy; {new Date().getFullYear()} Sagar Kumar Rana. All rights reserved.</span>
           </div>
 
           <div className="flex items-center space-x-4">

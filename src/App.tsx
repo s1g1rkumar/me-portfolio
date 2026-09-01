@@ -8,10 +8,27 @@ import { CharacterSheetSection } from './components/CharacterSheetSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
+import { CyberTerminalModal } from './components/CyberTerminalModal';
+import { ToastContainer } from './components/Toast';
+import type { ToastMessage } from './components/Toast';
 
 export function App() {
   const [activeSection, setActiveSection] = useState<string>('hero');
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [toasts, setToasts] = useState<ToastMessage[]>([]);
+
+  const showToast = (type: 'success' | 'info' | 'reward', title: string, message: string) => {
+    const id = Math.random().toString();
+    setToasts(prev => [...prev, { id, type, title, message }]);
+    setTimeout(() => {
+      setToasts(prev => prev.filter(t => t.id !== id));
+    }, 4500);
+  };
+
+  const handleDismissToast = (id: string) => {
+    setToasts(prev => prev.filter(t => t.id !== id));
+  };
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -41,8 +58,26 @@ export function App() {
       }
     };
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Toggle terminal on ~ or ` or Cmd/Ctrl + K
+      if (e.key === '`' || e.key === '~' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+        e.preventDefault();
+        setIsTerminalOpen(prev => {
+          if (!prev) {
+            showToast('info', 'CLI TERMINAL ACTIVE', 'Recruiter OS Terminal initialized. Type "help" for commands.');
+          }
+          return !prev;
+        });
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   return (
@@ -56,6 +91,10 @@ export function App() {
         activeSection={activeSection} 
         onNavigate={scrollToSection} 
         onOpenResume={() => setIsResumeOpen(true)}
+        onOpenTerminal={() => {
+          setIsTerminalOpen(true);
+          showToast('info', 'CLI TERMINAL ACTIVE', 'Recruiter OS Terminal initialized. Type "help" for commands.');
+        }}
       />
 
       {/* Main Single Page Sections */}
@@ -89,6 +128,19 @@ export function App() {
       <ResumeModal 
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
+      />
+
+      {/* Recruiter Cyber Terminal CLI Modal */}
+      <CyberTerminalModal
+        isOpen={isTerminalOpen}
+        onClose={() => setIsTerminalOpen(false)}
+        onNavigate={scrollToSection}
+      />
+
+      {/* HUD Micro Toast Alerts Container */}
+      <ToastContainer
+        toasts={toasts}
+        onDismiss={handleDismissToast}
       />
 
     </div>

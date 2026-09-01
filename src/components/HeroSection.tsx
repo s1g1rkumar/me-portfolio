@@ -140,20 +140,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-wrap items-center gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3.5 pt-4"
             >
               <button
                 onClick={() => onNavigate('projects')}
-                className="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-400 text-black font-display font-bold text-sm tracking-wider clip-corner-md shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center space-x-2 group"
+                className="w-full sm:w-auto justify-center px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-sky-400 text-black font-display font-bold text-sm tracking-wider clip-corner-md shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:shadow-[0_0_30px_rgba(0,240,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center space-x-2 group"
               >
                 <Sparkles className="w-4 h-4 text-black group-hover:rotate-12 transition-transform" />
-                <span>VIEW PROJECTS &amp; LIVE DEMOS</span>
+                <span>VIEW PROJECTS &amp; DEMOS</span>
                 <ChevronRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
                 onClick={() => onNavigate('contact')}
-                className="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-display font-bold text-sm tracking-wider border border-cyan-400/50 hover:border-cyan-400 clip-corner-md shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-200 flex items-center space-x-2"
+                className="w-full sm:w-auto justify-center px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-display font-bold text-sm tracking-wider border border-cyan-400/50 hover:border-cyan-400 clip-corner-md shadow-[0_0_15px_rgba(0,240,255,0.15)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-200 flex items-center space-x-2"
               >
                 <Shield className="w-4 h-4 text-cyan-400" />
                 <span>CONTACT &amp; RECRUIT</span>
@@ -164,7 +164,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
                 download="Sagar_Kumar_Rana_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="px-5 py-3.5 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500 hover:to-indigo-500 text-white font-tech text-xs tracking-wider border border-purple-400/50 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                className="w-full sm:w-auto justify-center px-5 py-3.5 bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500 hover:to-indigo-500 text-white font-tech text-xs tracking-wider border border-purple-400/50 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
               >
                 <FileText className="w-4 h-4 text-purple-200" />
                 <span>DOWNLOAD RESUME PDF</span>
@@ -172,7 +172,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResu
 
               <button
                 onClick={onOpenResume}
-                className="px-4 py-3.5 bg-slate-900/60 hover:bg-slate-800/80 text-cyan-300 font-tech text-xs tracking-wider border border-cyan-500/40 hover:border-cyan-400 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_10px_rgba(0,240,255,0.15)]"
+                className="w-full sm:w-auto justify-center px-4 py-3.5 bg-slate-900/60 hover:bg-slate-800/80 text-cyan-300 font-tech text-xs tracking-wider border border-cyan-500/40 hover:border-cyan-400 clip-corner-sm transition-all flex items-center space-x-2 shadow-[0_0_10px_rgba(0,240,255,0.15)]"
               >
                 <FileText className="w-4 h-4 text-cyan-400" />
                 <span>VIEW CV MODAL</span>

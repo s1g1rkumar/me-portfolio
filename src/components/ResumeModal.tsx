@@ -265,14 +265,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Modal Footer */}
-          <div className="p-4 bg-slate-950 border-t border-cyan-500/30 flex items-center justify-between">
-            <span className="text-xs font-tech text-slate-400">
+          <div className="p-4 bg-slate-950 border-t border-cyan-500/30 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <span className="text-xs font-tech text-slate-400 text-center sm:text-left">
               Sagar Kumar Rana • Senior Full-Stack Developer
             </span>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center justify-center space-x-3">
               <button
                 onClick={handlePrint}
-                className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-tech clip-corner-sm flex items-center space-x-1.5 border border-slate-700"
+                className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-tech clip-corner-sm flex items-center justify-center space-x-1.5 border border-slate-700 flex-1 sm:flex-initial"
               >
                 <Printer className="w-3.5 h-3.5 text-cyan-400" />
                 <span>PRINT CV</span>
@@ -282,7 +282,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 download="Sagar_Kumar_Rana_Resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-2 bg-gradient-to-r from-cyan-400 to-sky-400 text-black font-display font-bold text-xs tracking-wider clip-corner-sm flex items-center space-x-1.5 shadow-[0_0_15px_rgba(0,240,255,0.4)]"
+                className="px-4 py-2 bg-gradient-to-r from-cyan-400 to-sky-400 text-black font-display font-bold text-xs tracking-wider clip-corner-sm flex items-center justify-center space-x-1.5 shadow-[0_0_15px_rgba(0,240,255,0.4)] flex-1 sm:flex-initial"
               >
                 <Download className="w-3.5 h-3.5 text-black" />
                 <span>DOWNLOAD RESUME PDF</span>
